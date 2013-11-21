@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  userID: 1
+  title: MyString
+  description: MyString
+  isBan: false
+  imageID: 1
+
+two:
+  userID: 1
+  title: MyString
+  description: MyString
+  isBan: false
+  imageID: 1

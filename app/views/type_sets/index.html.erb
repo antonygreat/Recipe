@@ -1,0 +1,29 @@
+<h1>Listing type_sets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recipeid</th>
+      <th>Typeid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @type_sets.each do |type_set| %>
+      <tr>
+        <td><%= type_set.recipeID %></td>
+        <td><%= type_set.typeID %></td>
+        <td><%= link_to 'Show', type_set %></td>
+        <td><%= link_to 'Edit', edit_type_set_path(type_set) %></td>
+        <td><%= link_to 'Destroy', type_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Type set', new_type_set_path %>

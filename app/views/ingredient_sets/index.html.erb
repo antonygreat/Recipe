@@ -1,0 +1,33 @@
+<h1>Listing ingredient_sets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recipeid</th>
+      <th>Ingredientid</th>
+      <th>Amountnum</th>
+      <th>Unitofmeasure</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ingredient_sets.each do |ingredient_set| %>
+      <tr>
+        <td><%= ingredient_set.recipeID %></td>
+        <td><%= ingredient_set.ingredientID %></td>
+        <td><%= ingredient_set.amountNum %></td>
+        <td><%= ingredient_set.unitOfMeasure %></td>
+        <td><%= link_to 'Show', ingredient_set %></td>
+        <td><%= link_to 'Edit', edit_ingredient_set_path(ingredient_set) %></td>
+        <td><%= link_to 'Destroy', ingredient_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ingredient set', new_ingredient_set_path %>

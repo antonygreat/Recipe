@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  recipeID: 1
+  userID: 1
+  isBan: false
+  comment: MyString
+
+two:
+  recipeID: 1
+  userID: 1
+  isBan: false
+  comment: MyString

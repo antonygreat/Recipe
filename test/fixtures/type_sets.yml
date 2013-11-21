@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  recipeID: 1
+  typeID: 1
+
+two:
+  recipeID: 1
+  typeID: 1
