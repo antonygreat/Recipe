@@ -12,17 +12,17 @@
 
 <p>
   <strong>Isadmin:</strong>
-  <%= @user.isadmin %>
+  <%= @user.isAdmin %>
 </p>
 
 <p>
   <strong>Isban:</strong>
-  <%= @user.isban %>
+  <%= @user.isBan %>
 </p>
 
 <p>
   <strong>Isactivate:</strong>
-  <%= @user.isactivate %>
+  <%= @user.isActivate %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

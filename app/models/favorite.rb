@@ -1,5 +1,5 @@
 class Favorite < ActiveRecord::Base
-  attr_accessible :recipeID, :userID
+  attr_accessible :recipeid, :userid
   belongs_to:user
   belongs_to:recipe
 end

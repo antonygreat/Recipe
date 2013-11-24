@@ -7,15 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= link_to "users",users_path %>
-<%= link_to "recipes",recipes_path %>
-<%= link_to "comments",comments_path %>
-<%= link_to "favorites",favorites_path %>
-<%= link_to "ingredients",ingredients_path %>
-<%= link_to "ingredient_sets",ingredient_sets_path %>
-<%= link_to "ingredient_groups",ingredient_groups_path %>
-<%= link_to "types",types_path %>
-<%= link_to "type_sets",type_sets_path%>
+<%= link_to_unless_current  "users",controller: "users" %>
+<%= link_to_unless_current "recipes",controller: "recipes" %>
+<%= link_to_unless_current "comments",controller: "comments" %>
+<%= link_to_unless_current "favorites",controller: "favorites" %>
+<%= link_to_unless_current "ingredients",controller: "ingredients" %>
+<%= link_to_unless_current "ingredient_sets",controller: "ingredient_sets" %>
+<%= link_to_unless_current "ingredient_groups",controller: "ingredient_groups" %>
+<%= link_to_unless_current "types",controller: "types" %>
+<%= link_to_unless_current "type_sets",controller: "type_sets" %>
 
 <%= yield %>
 

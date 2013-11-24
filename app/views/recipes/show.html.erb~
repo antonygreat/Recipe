@@ -2,7 +2,7 @@
 
 <p>
   <strong>Userid:</strong>
-  <%= @recipe.userid %>
+  <%= @recipe.userID %>
 </p>
 
 <p>
@@ -17,12 +17,12 @@
 
 <p>
   <strong>Isban:</strong>
-  <%= @recipe.isban %>
+  <%= @recipe.isBan %>
 </p>
 
 <p>
   <strong>Imageid:</strong>
-  <%= @recipe.imageid %>
+  <%= @recipe.imageID %>
 </p>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |

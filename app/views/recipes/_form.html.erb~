@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br>
-    <%= collection_select(:users,:id,@all_users,:id,:username,{},{})%>
+    <%= f.label :userid %><br>
+    <%= f.number_field :userid %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
@@ -24,19 +24,13 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :isban %><br>
-    <%= f.check_box :isban %>
+    <%= f.label :isBan %><br>
+    <%= f.check_box :isBan %>
   </div>
   <div class="field">
     <%= f.label :imageid %><br>
     <%= f.number_field :imageid %>
   </div>
-
-  <div class="field">
-    <%= f.label "All Ingredients" %><br />
-    <%= collection_select(:ingredients,:id,@all_ingredients,:id,:name,{},{:multiple => true})%>
-  </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>

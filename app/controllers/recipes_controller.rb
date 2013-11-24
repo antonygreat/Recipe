@@ -15,19 +15,33 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @all_users=User.all
+    @all_ingredients=Ingredient.all
+#    @ingredient_set=@recipe.ingredient_sets.build
   end
 
   # GET /recipes/1/edit
   def edit
+    @recipe = set_recipe
+    @all_users=User.all
+    @all_ingredients=Ingredient.all
   end
 
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.new(params[:recipe])
+    @recipe.userid=params[:users][:id]
 
     respond_to do |format|
       if @recipe.save
+        
+#        params[:ingredients][:id].each do |ingre|
+#          if !ingre.empty?
+#           @ingredient_set=Ingredient_set.new(:ingredientid => ingre, :recipeid => Recipe.last().id)
+#          end
+#        end
+        
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render action: 'show', status: :created, location: @recipe }
       else
