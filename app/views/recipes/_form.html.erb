@@ -37,6 +37,11 @@
     <%= collection_select(:ingredients,:id,@all_ingredients,:id,:name,{},{:multiple => true})%>
   </div>
 
+  <div class="field">
+    <%= f.label "All Types" %><br />
+    <%= collection_select(:types,:id,@all_types,:id,:name,{},{:multiple => true})%>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

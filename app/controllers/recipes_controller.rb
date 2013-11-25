@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @all_users=User.all
     @all_ingredients=Ingredient.all
+    @all_types=Type.all
 #    @ingredient_set=@recipe.ingredient_sets.build
   end
 
