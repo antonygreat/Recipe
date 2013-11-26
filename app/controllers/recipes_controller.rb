@@ -10,10 +10,26 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
-  end
+#For getting the ingredient info from ingredient set
+    @ingredientset=IngredientSet.where("recipeid=?",set_recipe.id)
+    
+    @ingredients = Array.new()
+    i=0
+    @ingredientset.each do |set|
+       @ingredients[i]=Ingredient.find(set.ingredientid)
+      i+=1
+    end
 
-  def created
-  
+#For getting the type infor from type set
+    @typesets=TypeSet.where("recipeid=?",set_recipe.id)
+
+    @types = Array.new()
+    i=0
+    @typesets.each do |set|
+       @types[i]=Type.find(set.typeid)
+      i+=1
+    end
+
   end
 
   # GET /recipes/new
@@ -58,7 +74,7 @@ class RecipesController < ApplicationController
         end
         
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render action: 'created', status: :created, location: @recipe }
+        format.json { render action: 'new', status: :created, location: @recipe }
       else
         format.html { render action: 'new' }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }

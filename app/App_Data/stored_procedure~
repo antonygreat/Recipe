@@ -38,7 +38,7 @@ CREATE TABLE recipes
 CREATE TABLE favorites
 (
   id serial NOT NULL,
-  recipeid integer,
+  recipeid integer references recipes(id),
   userid integer,
   created_at timestamp without time zone,
   updated_at timestamp without time zone,
@@ -68,12 +68,11 @@ CREATE TABLE types
 
 CREATE TABLE type_sets
 (
-  id serial NOT NULL,
   recipeid integer,
   typeid integer,
   created_at timestamp without time zone,
   updated_at timestamp without time zone,
-  CONSTRAINT type_sets_pkey PRIMARY KEY (id)
+  CONSTRAINT type_sets_pkey PRIMARY KEY (recipeid,typeid)
 );
 
 CREATE TABLE ingredient_groups
@@ -97,14 +96,13 @@ CREATE TABLE ingredients
 
 CREATE TABLE ingredient_sets
 (
-  id serial NOT NULL,
   recipeid integer,
   ingredientid integer,
   amountnum numeric,
   unitofmeasure character varying(255),
   created_at timestamp without time zone,
   updated_at timestamp without time zone,
-  CONSTRAINT ingredient_sets_pkey PRIMARY KEY (id)
+  CONSTRAINT ingredient_sets_pkey PRIMARY KEY (recipeid,ingredientid)
 );
 
 INSERT INTO Ingredient_Groups(name) VALUES 
