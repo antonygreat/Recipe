@@ -16,10 +16,10 @@
   <tbody>
     <% @ingredient_sets.each do |ingredient_set| %>
       <tr>
-        <td><%= ingredient_set.recipeID %></td>
-        <td><%= ingredient_set.ingredientID %></td>
-        <td><%= ingredient_set.amountNum %></td>
-        <td><%= ingredient_set.unitOfMeasure %></td>
+        <td><%= ingredient_set.recipeid %></td>
+        <td><%= ingredient_set.ingredientid %></td>
+        <td><%= ingredient_set.amountnum %></td>
+        <td><%= ingredient_set.unitofmeasure %></td>
         <td><%= link_to 'Show', ingredient_set %></td>
         <td><%= link_to 'Edit', edit_ingredient_set_path(ingredient_set) %></td>
         <td><%= link_to 'Destroy', ingredient_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>

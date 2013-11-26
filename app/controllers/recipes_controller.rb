@@ -12,6 +12,10 @@ class RecipesController < ApplicationController
   def show
   end
 
+  def created
+  
+  end
+
   # GET /recipes/new
   def new
     @recipe = Recipe.new
@@ -37,14 +41,24 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.save
         
-#        params[:ingredients][:id].each do |ingre|
-#          if !ingre.empty?
-#           @ingredient_set=Ingredient_set.new(:ingredientid => ingre, :recipeid => Recipe.last().id)
-#          end
-#        end
+        #save the ingredients into db
+        params[:ingredients][:id].each do |ingre|
+          if !ingre.empty?
+           @ingredientset=IngredientSet.new(:ingredientid => ingre, :recipeid => @recipe.id)            
+           @ingredientset.save
+          end
+        end
+
+        #save the types into db
+        params[:types][:id].each do |type|
+          if !type.empty?
+            @typeset=TypeSet.new(:typeid => type,:recipeid => @recipe.id)
+            @typeset.save
+          end
+        end
         
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @recipe }
+        format.json { render action: 'created', status: :created, location: @recipe }
       else
         format.html { render action: 'new' }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }

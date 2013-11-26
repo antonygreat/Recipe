@@ -5,9 +5,8 @@
     <tr>
       <th>Userid</th>
       <th>Title</th>
-      <th>Description</th>
       <th>Isban</th>
-      <th>Imageid</th>
+      <!--<th>Imageid</th>-->
       <th></th>
       <th></th>
       <th></th>
@@ -19,9 +18,8 @@
       <tr>
         <td><%= recipe.userid %></td>
         <td><%= recipe.title %></td>
-        <td><%= recipe.description %></td>
         <td><%= recipe.isban %></td>
-        <td><%= recipe.imageid %></td>
+       <!--<td><%= recipe.imageid %></td>-->
         <td><%= link_to 'Show', recipe %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
         <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
