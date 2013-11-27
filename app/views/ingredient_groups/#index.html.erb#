@@ -6,28 +6,23 @@
       <th>Ingredient</th>
       <th></th>
     </tr>
-
     <% @ingredient_groups.each do |ingredient_group| %>
       <tr>
         <td>
-	 <strong><%= link_to ingredient_group.name,ingredient_group %></strong>
+	 <strong><%= link_to ingredient_group.name, ingredient_group %></strong>
 	</td>
-
-	<% i=0 %>
+	<% i=0>
 	<%= @ingredients.each do |ingredient| %>
-	 
- 	   <% if ingredient_group.id == ingredient.groupid && i<5 %>
-	       <td>
-		 <%= link_to ingredient.name,ingredient %>
-	       </td>	
-	     <% i += 1 %>
+	<% while i<5 %>
+ 	   <% if ingredient_group.id == ingredient.groupid %>
+	   <td>
+	  <%= link_to ingredient.name,ingredient %>
+	  </td>
 	   <% end %>
 	 <% end %>
-
-	 <td><strong><%= link_to "More", ingredient_group %></strong></td>
+	<% end %>
       </tr>
     <% end %>
-
 </table>
 
 <br>
