@@ -3,10 +3,10 @@ class IngredientsController < ApplicationController
 
   #show the recipe list by certain ingredient
   def show
-    @recipeset = IngredientSet.where("ingredientid=?",set_ingredient.id)
+    @ingredientsets = IngredientSet.where("ingredientid=?",set_ingredient.id)
     @recipes=Array.new()
     i=0
-    @recipeset.each do |set|
+    @ingredientsets.each do |set|
       @recipes[i]= Recipe.find(set.recipeid)
       i+=1
       end

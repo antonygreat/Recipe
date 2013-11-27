@@ -11,11 +11,11 @@
 <%= link_to_unless_current "recipes",controller: "recipes" %>
 <%= link_to_unless_current "comments",controller: "comments" %>
 <%= link_to_unless_current "favorites",controller: "favorites" %>
-<!--<%= link_to_unless_current "ingredient_sets",controller: "ingredient_sets" %>-->
+<%= link_to_unless_current "ingredient_sets",controller: "ingredient_sets" %>
 <%= link_to_unless_current "Search By Ingredients",controller: "ingredient_groups" %>
 <%= link_to_unless_current "Search By Types",controller: "types" %>
-<!--<%= link_to_unless_current "type_sets",controller: "type_sets" %>
--->
+<%= link_to_unless_current "type_sets",controller: "type_sets" %>
+
 <%= yield %>
 
 </body>

@@ -17,14 +17,14 @@
 
 <p>
   <strong>Ingredients:</strong>
-  <% @ingredients.each do |i| %>
+  <%- @ingredients.each do |i| %>
   <%= i.name %>
   <% end %>
 </p>
 
 <p>
   <strong>Types:</strong>
-  <% @types.each do |i| %>
+  <%= @types.each do |i| %>
   <%= i.name %>
   <% end %>
 </p>

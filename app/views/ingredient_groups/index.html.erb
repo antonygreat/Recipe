@@ -14,7 +14,7 @@
 	</td>
 
 	<% i=0 %>
-	<%= @ingredients.each do |ingredient| %>
+	<% @ingredients.each do |ingredient| %>
 	 
  	   <% if ingredient_group.id == ingredient.groupid && i<5 %>
 	       <td>

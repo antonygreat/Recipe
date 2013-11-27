@@ -1,9 +1,18 @@
-<p id="notice"><%= notice %></p>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Name:</strong>
-  <%= @type.name %>
-</p>
-
-<%= link_to 'Edit', edit_type_path(@type) %> |
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.title %></td>
+        <td><%= User.find(recipe.userid).username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Back', types_path %>
