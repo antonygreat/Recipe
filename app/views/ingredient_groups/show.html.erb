@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @ingredient_group.name %>
+ <strong><%= @ingredient_group.name %></strong>
 </p>
+
+<table>
+<tr>
+<%= @ingredients.each do |ingredient| %>
+<td><%= link_to ingredient.name, ingredient %></td>
+<% end %>
+</tr>
+</table>
 
 <%= link_to 'Edit', edit_ingredient_group_path(@ingredient_group) %> |
 <%= link_to 'Back', ingredient_groups_path %>

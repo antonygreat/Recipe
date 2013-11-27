@@ -5,11 +5,13 @@ class IngredientGroupsController < ApplicationController
   # GET /ingredient_groups.json
   def index
     @ingredient_groups = IngredientGroup.all
+    @ingredients = Ingredient.all
   end
 
   # GET /ingredient_groups/1
   # GET /ingredient_groups/1.json
   def show
+    @ingredients = Ingredient.where("groupid=?",set_ingredient_group.id)
   end
 
   # GET /ingredient_groups/new
