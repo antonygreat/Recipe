@@ -6,23 +6,25 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+ruby 2.0.0p247
+
+* Rails version
+rails 4.0.0
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+* Database
+We use postgreSql. 
+So please install Postgresql and PGadmin. Postgresql is database itself and pgadmin is the user interface for managing your database.
+You can find tutorial for that.
+Remeber after doing that, change the configuration for database in config/database.yml file. I set the password for my database, you don't need to.
+
+* Database name
+niceweather
 
 * Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+You can insert table and data into database by running the stored procedure in query tool.
+The stored procedure is in app/App_Data folder.
+! Don't use db migrate for database, you get the project then you create the database by yourself and then create table and data by stored procedure in query tool.
