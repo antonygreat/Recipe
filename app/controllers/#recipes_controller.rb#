@@ -31,7 +31,6 @@ class RecipesController < ApplicationController
 #create new comment
     @comment = Comment.new
     @all_users=User.all
-    @all_recipes=Recipe.all
 
 #create new favorite
     @favorite = Favorite.new

@@ -63,10 +63,7 @@
 <% else %>
 <%= form_for(@favorite) do |f| %>  
   <%= f.hidden_field :recipeid,:value => @recipe.id %>
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= collection_select(:users,:id,@all_users,:id,:username,{},{})%>
-  </div>
+ 
   <div class="actions">
     <%= f.submit 'Dislike' %>
   </div>

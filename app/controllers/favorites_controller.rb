@@ -1,34 +1,13 @@
 class FavoritesController < ApplicationController
   before_action :set_favorite, only: [:show, :edit, :update, :destroy]
 
-  # GET /favorites
-  # GET /favorites.json
-  def index
-    @favorites = Favorite.all
-  end
-
-  # GET /favorites/1
-  # GET /favorites/1.json
-  def show
-  end
-
-  # GET /favorites/new
-  def new
-    @favorite = Favorite.new
-    @all_users=User.all
-    @all_recipes=Recipe.all
-  end
-
-  # POST /favorites
-  # POST /favorites.json
-  def create
+ def create
     @favorite = Favorite.new(params[:favorite])
     @favorite.userid=params[:users][:id]
-    @favorite.recipeid=params[:recipes][:id]
 
     respond_to do |format|
       if @favorite.save
-        format.html { redirect_to @favorite, notice: 'Favorite was successfully created.' }
+        format.html { redirect_to Recipe.find(@favorite.recipeid), notice: 'The recipe has been added into your favorite.' }
         format.json { render action: 'show', status: :created, location: @favorite }
       else
         format.html { render action: 'new' }
