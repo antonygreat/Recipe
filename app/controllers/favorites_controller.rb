@@ -15,16 +15,16 @@ class FavoritesController < ApplicationController
   # GET /favorites/new
   def new
     @favorite = Favorite.new
-  end
-
-  # GET /favorites/1/edit
-  def edit
+    @all_users=User.all
+    @all_recipes=Recipe.all
   end
 
   # POST /favorites
   # POST /favorites.json
   def create
-    @favorite = Favorite.new(favorite_params)
+    @favorite = Favorite.new(params[:favorite])
+    @favorite.userid=params[:users][:id]
+    @favorite.recipeid=params[:recipes][:id]
 
     respond_to do |format|
       if @favorite.save
@@ -32,20 +32,6 @@ class FavoritesController < ApplicationController
         format.json { render action: 'show', status: :created, location: @favorite }
       else
         format.html { render action: 'new' }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /favorites/1
-  # PATCH/PUT /favorites/1.json
-  def update
-    respond_to do |format|
-      if @favorite.update(favorite_params)
-        format.html { redirect_to @favorite, notice: 'Favorite was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
         format.json { render json: @favorite.errors, status: :unprocessable_entity }
       end
     end

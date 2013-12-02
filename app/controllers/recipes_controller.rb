@@ -1,14 +1,10 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
-  # GET /recipes
-  # GET /recipes.json
   def index
     @recipes = Recipe.all
   end
 
-  # GET /recipes/1
-  # GET /recipes/1.json
   def show
 #For getting the ingredient info from ingredient set
     @ingredientset=IngredientSet.where("recipeid=?",set_recipe.id)
@@ -29,6 +25,8 @@ class RecipesController < ApplicationController
        @types[i]=Type.find(set.typeid)
       i+=1
     end
+
+    @comments = Comment.where("recipeid=?",set_recipe.id)
 
   end
 

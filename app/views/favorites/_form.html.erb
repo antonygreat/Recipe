@@ -11,13 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :recipeid %><br>
-    <%= f.number_field :recipeid %>
+ <div class="field">
+     <%= f.label :recipe %><br>
+    <%= collection_select(:recipes,:id,@all_recipes,:id,:title,{},{})%>
   </div>
   <div class="field">
-    <%= f.label :userid %><br>
-    <%= f.number_field :userid %>
+    <%= f.label :user %><br>
+    <%= collection_select(:users,:id,@all_users,:id,:username,{},{})%>
   </div>
   <div class="actions">
     <%= f.submit %>

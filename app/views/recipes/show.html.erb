@@ -41,3 +41,32 @@
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
+
+
+<div id="comment">
+<!-- for showing existed comments -->
+  <% @comments.each do |comment| %>
+  <% if comment.isban == true %>
+  
+  <p>
+    <strong><%= User.find(comment.userid).username %>:</strong>
+    <%= comment.comment %>
+  </p>
+
+  <% end %>
+  <% end %>
+
+<!-- for adding a new comment -->
+  <%= form_for @comment do |f| %>
+  
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_field :comment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% f.hidden_field :@recipe.id
+  <% end %>
+</div>

@@ -7,24 +7,27 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
-  # GET /comments/1
-  # GET /comments/1.json
   def show
+    @reipces = Recipe.all
+    @users = User.all
   end
 
   # GET /comments/new
   def new
     @comment = Comment.new
+    @all_users=User.all
+    @all_recipes=Recipe.all
   end
 
   # GET /comments/1/edit
   def edit
   end
 
-  # POST /comments
-  # POST /comments.json
+#add a new comment
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(params[:comment])
+    @comment.userid=params[:users][:id]
+    @comment.recipeid=params[:recipes][:id]
 
     respond_to do |format|
       if @comment.save
