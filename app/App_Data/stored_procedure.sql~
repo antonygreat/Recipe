@@ -68,6 +68,7 @@ CREATE TABLE types
 
 CREATE TABLE type_sets
 (
+  id serial NOT NULL,
   recipeid integer references recipes(id),
   typeid integer references types(id),
   created_at timestamp without time zone,
@@ -96,6 +97,7 @@ CREATE TABLE ingredients
 
 CREATE TABLE ingredient_sets
 (
+  id serial NOT NULL,
   recipeid integer references recipes(id),
   ingredientid integer references ingredients(id),
   amountnum numeric,

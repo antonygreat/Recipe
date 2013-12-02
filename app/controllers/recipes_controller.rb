@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-#For getting the ingredient info from ingredient set
+    #For getting the ingredient info from ingredient set
     @ingredientset=IngredientSet.where("recipeid=?",set_recipe.id)
     
     @ingredients = Array.new()
@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
       i+=1
     end
 
-#For getting the type infor from type set
+    #For getting the type infor from type set
     @typesets=TypeSet.where("recipeid=?",set_recipe.id)
 
     @types = Array.new()
@@ -25,40 +25,38 @@ class RecipesController < ApplicationController
        @types[i]=Type.find(set.typeid)
       i+=1
     end
-#get comments from db
+    #get comments from db
     @comments = Comment.where("recipeid = ? AND isban = ?", set_recipe.id , false)
 
-#create new comment
+    #create new comment
     @comment = Comment.new
     @all_users=User.all
     @all_recipes=Recipe.all
 
-#create new favorite
+    #create new favorite
     @favorite = Favorite.new
 
   end
 
-  # GET /recipes/new
+#Create new recipe
   def new
     @recipe = Recipe.new
     @all_users=User.all
     @all_ingredients=Ingredient.all
     @all_types=Type.all
-#    @ingredient_set=@recipe.ingredient_sets.build
   end
 
-  # GET /recipes/1/edit
+
   def edit
     @recipe = set_recipe
     @all_users=User.all
     @all_ingredients=Ingredient.all
   end
 
-  # POST /recipes
-  # POST /recipes.json
+#Save the new recipe into db
   def create
     @recipe = Recipe.new(params[:recipe])
-    @recipe.userid=params[:users][:id]
+    @recipe.userid=
 
     respond_to do |format|
       if @recipe.save

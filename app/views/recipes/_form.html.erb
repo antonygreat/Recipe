@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br>
-    <%= collection_select(:users,:id,@all_users,:id,:username,{},{})%>
-  </div>
-  <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>

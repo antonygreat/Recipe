@@ -6,21 +6,6 @@ DROP TABLE Types;
 DROP TABLE Comments;
 DROP TABLE Favorites;
 DROP TABLE Recipes;
-DROP TABLE Users;
-
-
-CREATE TABLE users
-(
-  id serial NOT NULL,
-  username character varying(255),
-  password character varying(255),
-  isadmin boolean,
-  isban boolean,
-  isactivate boolean,
-  created_at timestamp without time zone,
-  updated_at timestamp without time zone,
-  CONSTRAINT users_pkey PRIMARY KEY (id)
-);
 
 CREATE TABLE recipes
 (

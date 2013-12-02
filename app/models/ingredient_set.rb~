@@ -1,2 +1,0 @@
-class IngredientSet < ActiveRecord::Base
-end

@@ -11,80 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120222604) do
+ActiveRecord::Schema.define(version: 20131127152507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: true do |t|
-    t.integer  "recipeID"
-    t.integer  "userID"
-    t.boolean  "isBan"
-    t.string   "comment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "favorites", force: true do |t|
-    t.integer  "recipeID"
-    t.integer  "userID"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ingredient_groups", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ingredient_sets", force: true do |t|
-    t.integer  "recipeID"
-    t.integer  "ingredientID"
-    t.decimal  "amountNum"
-    t.string   "unitOfMeasure"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ingredients", force: true do |t|
-    t.string   "name"
-    t.integer  "groupID"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "recipes", force: true do |t|
-    t.integer  "userID"
-    t.string   "title"
-    t.string   "description"
-    t.boolean  "isBan"
-    t.integer  "imageID"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "type_sets", force: true do |t|
-    t.integer  "recipeID"
-    t.integer  "typeID"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "types", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.boolean  "isAdmin"
-    t.boolean  "isBan"
-    t.boolean  "isActivate"
+    t.string   "name"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.boolean  "is_admin"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
