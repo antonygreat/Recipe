@@ -10,13 +10,16 @@
   <body>
     <div class="menuholder">
       <ul class="menu slide">
-	<li> <%= link_to_unless_current  "users",controller: "users" %></li>
-	<li> <%= link_to_unless_current "recipes",controller: "recipes" %></li>
-	<!--<%= link_to_unless_current "ingredient_sets",controller: "ingredient_sets" %>-->
-	<li> <%= link_to_unless_current "Search By Ingredients",controller: "ingredient_groups" %></li>
-	<li>  <%= link_to_unless_current "Search By Types",controller: "types" %></li>
-	<!--<%= link_to_unless_current "type_sets",controller: "type_sets" %>
-	-->
+	<li><%= link_to_unless_current "Search By Ingredients",controller: "ingredient_groups" %></li>
+	<li><%= link_to_unless_current "Search By Types",controller: "types" %></li>
+	<% if signed_in? %>
+	<li><%= link_to_unless_current "Make New Recipe",new_recipe_path %></li>
+	<li><%= link_to_unless_current "Setting", edit_user_path(current_user)%></li>
+	<li><%= link_to_unless_current "Sign out", signout_path, method: "delete" %></li>
+	<% else %>
+	<li> <%= link_to_unless_current "Sign in", signin_path %></li>
+	<li> <%= link_to_unless_current "Register", register_path%></li>
+	<% end %>
       </ul>
     </div>
 
@@ -25,18 +28,7 @@
     </div>
 
 </div>
-<!--<%= link_to_unless_current "Home", home_path%>
-  <%= link_to_unless_current "About", about_path%>
-  <%= link_to_unless_current "Help", help_path%>-->
-  <%= link_to_unless_current "All users", users_path%>
-  <% if signed_in? %>
-    <%= link_to_unless_current "Settings", edit_user_path(current_user)%>
-    <%= link_to_unless_current "Profile", user_path(current_user)%>
-    <%= link_to_unless_current "Sign out", signout_path, method: "delete" %>
-  <% else %>
-    <%= link_to_unless_current "Sign in", signin_path %>
-    <%= link_to_unless_current "Register", register_path%>
-  <% end %>
+  
 
 <!--<%= yield %>-->
 

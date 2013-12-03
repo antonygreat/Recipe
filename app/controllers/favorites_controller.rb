@@ -1,18 +1,22 @@
 class FavoritesController < ApplicationController
   before_action :set_favorite, only: [:show, :edit, :update, :destroy]
 
- def create
-    @favorite = Favorite.new(params[:favorite])
-    @favorite.userid=params[:users][:id]
+  def index
+    @favorites = Favorite.where("userid=?",current_user.id)
+  end
 
-    respond_to do |format|
+  def create
+    @favorite=Favorite.find_by(userid: current_user.id, recipeid: params[:favorite][:recipeid])
+    
+    if @favorite.nil? #this recipe hasn't been added by this user
+      @favorite = Favorite.new(params[:favorite])
+      @favorite.userid=current_user.id    
       if @favorite.save
-        format.html { redirect_to Recipe.find(@favorite.recipeid), notice: 'The recipe has been added into your favorite.' }
-        format.json { render action: 'show', status: :created, location: @favorite }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @favorite.errors, status: :unprocessable_entity }
+        redirect_to Recipe.find(@favorite.recipeid)
       end
+    else #the recipe has been added by user
+      @favorite.destroy
+      redirect_to Recipe.find(params[:favorite][:recipeid])
     end
   end
 

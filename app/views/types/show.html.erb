@@ -10,7 +10,7 @@
     <% @recipes.each do |recipe| %>
       <tr>
         <td><%= link_to recipe.title,recipe %></td>
-        <td><%= User.find(recipe.userid).username %></td>
+        <td><%= User.find(recipe.userid).name %></td>
       </tr>
     <% end %>
   </tbody>

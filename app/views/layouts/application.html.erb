@@ -14,10 +14,12 @@
 	<li><%= link_to_unless_current "Search By Types",controller: "types" %></li>
 	<% if signed_in? %>
 	<li><%= link_to_unless_current "Make New Recipe",new_recipe_path %></li>
-	<li><%= link_to_unless_current "Setting", edit_user_path(current_user)%></li>
-	<li><%= link_to_unless_current "Sign out", signout_path, method: "delete" %></li>
+<li><%= link_to_unless_current "My Recipes",recipes_path %></li>
+<li><%= link_to_unless_current "My Favorites",favorites_path %></li>
+<li><%= link_to_unless_current "Setting", edit_user_path(current_user)%></li>
+	<li><%= link_to_unless_current "Log Out", signout_path, method: "delete" %></li>
 	<% else %>
-	<li> <%= link_to_unless_current "Sign in", signin_path %></li>
+	<li> <%= link_to_unless_current "Log In", signin_path %></li>
 	<li> <%= link_to_unless_current "Register", register_path%></li>
 	<% end %>
       </ul>

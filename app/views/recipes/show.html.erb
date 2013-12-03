@@ -44,60 +44,46 @@
     <%= @recipe.imageid %>
 </p>-->
 
-
+<% if signed_in? %>
 <div id="favorite">
-
-<% if Favorite.where("recipeid =? AND userid =?",@recipe.id,1).nil? %>
 
   <%= form_for(@favorite) do |f| %>  
   <%= f.hidden_field :recipeid,:value => @recipe.id %>
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= collection_select(:users,:id,@all_users,:id,:username,{},{})%>
-  </div>
   <div class="actions">
+    <!--user hasn't added it to favorite-->
+    <% if Favorite.find_by(userid: current_user.id,recipeid:
+    @recipe.id).nil? %>
     <%= f.submit 'Like' %>
-  </div>
-  <% end %>
-
-<% else %>
-<%= form_for(@favorite) do |f| %>  
-  <%= f.hidden_field :recipeid,:value => @recipe.id %>
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= collection_select(:users,:id,@all_users,:id,:username,{},{})%>
-  </div>
-  <div class="actions">
+    <% else %>
+    <!--user has already added it into favorite-->
     <%= f.submit 'Dislike' %>
+    <% end %>
   </div>
   <% end %>
-
-<% end %>
 
 </div>
+<% end %>
+
 
 <!-- for showing existed comments -->
 <div id="comment">
   <h2>Comments:</h2>
   <% @comments.each do |comment| %>
   <p>
-    <strong><%= User.find(comment.userid).username %>:</strong>
+    <strong><%= User.find(comment.userid).name %>:</strong>
     <%= comment.comment %>
   </p>
   <% end %>
 </div>
 
 <!-- for adding a new comment -->
+<% if signed_in? %>
 <div id="add_comment">
 
   <%= form_for(@comment) do |f| %>
 
   <%= f.hidden_field :recipeid,:value => @recipe.id %>
 
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= collection_select(:users,:id,@all_users,:id,:username,{},{})%>
-  </div>
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_field :comment %>
@@ -107,5 +93,6 @@
   </div>
   <% end %>
 </div>
+<% end %>
 
 

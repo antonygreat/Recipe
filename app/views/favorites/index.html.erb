@@ -1,0 +1,25 @@
+<h1>Listing My Favorites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recipeid</th>
+      <th>userid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.recipeid %></td>
+        <td><%= favorite.userid %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

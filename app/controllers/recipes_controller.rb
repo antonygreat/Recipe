@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where("userid=?",current_user.id)
   end
 
   def show
@@ -56,7 +56,7 @@ class RecipesController < ApplicationController
 #Save the new recipe into db
   def create
     @recipe = Recipe.new(params[:recipe])
-    @recipe.userid=
+    @recipe.userid=current_user.id
 
     respond_to do |format|
       if @recipe.save
@@ -98,8 +98,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /recipes/1
-  # DELETE /recipes/1.json
+
   def destroy
     @recipe.destroy
     respond_to do |format|
@@ -107,6 +106,7 @@ class RecipesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

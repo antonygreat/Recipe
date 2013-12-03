@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
 #add a new comment
-  def create
+  def create 
     @comment = Comment.new(params[:comment])
-    @comment.userid=params[:users][:id]
+    @comment.userid=current_user.id
     @comment.isban=false    
 
     respond_to do |format|
@@ -15,8 +15,7 @@ class CommentsController < ApplicationController
     end
   end
   
-  # DELETE /comments/1
-  # DELETE /comments/1.json
+
   def destroy
     @comment.destroy
     respond_to do |format|

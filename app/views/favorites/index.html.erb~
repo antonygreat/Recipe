@@ -1,0 +1,29 @@
+<h1>Listing My Favorites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Recipeid</th>
+      <th>userid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.recipeid %></td>
+        <td><%= favorite.userid %></td>
+        <td><%= link_to 'Show', type_set %></td>
+        <td><%= link_to 'Edit', edit_type_set_path(type_set) %></td>
+        <td><%= link_to 'Destroy', type_set, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Type set', new_type_set_path %>
