@@ -7,7 +7,10 @@
 <table>
   <% @ingredients.each do |ingredient| %>
   <tr>
-    <td><%= link_to ingredient.name, ingredient %></td>
+    <td>
+      <%= image_tag("Ingredient/"+@ingredient_group.name+"/"+ingredient.name+".jpg",
+	  :alt => "Ingredient") %>
+	  <%= link_to ingredient.name, ingredient %></td>
   </tr>
   <% end %>
 </table>

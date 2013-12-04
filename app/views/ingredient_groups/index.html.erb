@@ -1,5 +1,3 @@
-<h1>Listing ingredient_groups</h1>
-
 <table>
     <tr>
       <th>Ingredient Group</th>
@@ -8,18 +6,26 @@
     </tr>
 
     <% @ingredient_groups.each do |ingredient_group| %>
-      <tr>
-        <td>
-	 <strong><%= link_to ingredient_group.name,ingredient_group %></strong>
-	</td>
-
-	<% i=0 %>
-	<% @ingredients.each do |ingredient| %>
-	 
- 	   <% if ingredient_group.id == ingredient.groupid && i<5 %>
-	       <td>
-		 <%= link_to ingredient.name,ingredient %>
-	       </td>	
+    <tr>
+      <td>
+	<div id="main_ingre">
+	  <%= image_tag("Ingredient/"+ingredient_group.name+".jpg",
+	      :class => "ingredient_img",
+	  :alt => "Main Category") %>
+	  <strong><%= link_to ingredient_group.name,ingredient_group %></strong>
+      </td>
+      </div>
+      <% i=0 %>
+      <% @ingredients.each do |ingredient| %>
+      
+      <% if ingredient_group.id == ingredient.groupid && i<5 %>
+	 <td>
+	   <div id="ingre">
+	     <%= image_tag("Ingredient/"+ingredient_group.name+"/"+ingredient.name+".jpg",
+		 :alt => "Sub Category") %>
+      <%= link_to ingredient.name,ingredient %>
+</div>	      
+ </td>	
 	     <% i += 1 %>
 	   <% end %>
 	 <% end %>
@@ -29,7 +35,3 @@
     <% end %>
 
 </table>
-
-<br>
-
-<%= link_to 'New Ingredient group', new_ingredient_group_path %>

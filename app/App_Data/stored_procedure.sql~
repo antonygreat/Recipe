@@ -6,21 +6,6 @@ DROP TABLE Types;
 DROP TABLE Comments;
 DROP TABLE Favorites;
 DROP TABLE Recipes;
-DROP TABLE Users;
-
-
-CREATE TABLE users
-(
-  id serial NOT NULL,
-  username character varying(255),
-  password character varying(255),
-  isadmin boolean,
-  isban boolean,
-  isactivate boolean,
-  created_at timestamp without time zone,
-  updated_at timestamp without time zone,
-  CONSTRAINT users_pkey PRIMARY KEY (id)
-);
 
 CREATE TABLE recipes
 (
@@ -109,16 +94,16 @@ CREATE TABLE ingredient_sets
 
 INSERT INTO Ingredient_Groups(name) VALUES 
 ('Meat'),
-('Sea Food'),
+('Sea_Food'),
 ('Vegetable');
 
 INSERT INTO Ingredients(name,groupid) VALUES 
 ('Beaf',1),
 ('Chicken',1),
-('Chicken Leg',1),
-('Chicken Wings',1),
-('Cow Tail',1),
-('Deer Meat',1),
+('Chicken_Leg',1),
+('Chicken_Wings',1),
+('Cow_Tail',1),
+('Deer_Meat',1),
 ('Duck',1),
 ('Egg',1),
 ('Heart',1),
@@ -126,37 +111,37 @@ INSERT INTO Ingredients(name,groupid) VALUES
 ('Liver',1),
 ('Lung',1),
 ('Pegion',1),
-('Pig Blood',1),
-('Pig Ear',1),
-('Pig Kidney',1),
-('Pig Leg Bone',1),
+('Pig_Blood',1),
+('Pig_Ear',1),
+('Pig_Kidney',1),
+('Pig_Leg_Bone',1),
 ('Rabbit',1),
 ('Ribs',1),
 ('Sausage',1),
-('Soft Bone',1),
+('Soft_Bone',1),
 ('Tongue',1),
 ('Turkey',1),
-('Lucheon Meat',1),
-('Smoked Meat',1),
+('Lucheon_Meat',1),
+('Smoked_Meat',1),
 ('Shank',1),
-('Pork Intestine',1),
-('Pig Brain',1),
+('Pork_Intestine',1),
+('Pig_Brain',1),
 ('Pork',1),
-('Pig Feet',1),
-('Preserved Ham',1),
-('Short Loin',1),
+('Pig_Feet',1),
+('Preserve_Ham',1),
+('Short_Loin',1),
 
 ('Crab',2),
 ('Salmon',2),
 ('Shrimp',2),
-('Largehead Hairtail',2),
+('Largehead_Hairtail',2),
 ('Kelp',2),
 ('Oyster',2),
 ('Seaweed',2),
 
 ('Broccoli',3),
 ('Carrot',3),
-('Chinese Cabbage',3),
+('Chinese_Cabbage',3),
 ('Cucumber',3),
 ('Eggplant',3),
 ('Lettuce',3),

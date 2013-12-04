@@ -1,0 +1,108 @@
+DROP TABLE Ingredient_Sets;
+DROP TABLE Ingredients;
+DROP TABLE Ingredient_Groups;
+DROP TABLE Type_Sets;
+DROP TABLE Types;
+DROP TABLE Comments;
+DROP TABLE Favorites;
+DROP TABLE Recipes;
+DROP TABLE Users;
+
+
+CREATE TABLE users
+(
+  id serial NOT NULL,
+  username character varying(255),
+  password character varying(255),
+  isAdmin boolean,
+  isBan boolean,
+  isActivate boolean,
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT users_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE recipes
+(
+  id serial NOT NULL,
+  userID integer REFERENCES Users (id),
+  title character varying(255),
+  description character varying(255),
+  isBan boolean,
+  imageID integer,
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT recipes_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE favorites
+(
+  id serial NOT NULL,
+  recipeID integer REFERENCES Recipes(id),
+  userID integer REFERENCES Users(id),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT favorites_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE comments
+(
+  id serial NOT NULL,
+  recipeID integer REFERENCES Recipes(id),
+  userID integer REFERENCES Users(id),
+  isBan boolean,
+  comment character varying(255),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT comments_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE types
+(
+  id serial NOT NULL,
+  name character varying(255),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT types_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE type_sets
+(
+  id serial NOT NULL,
+  recipeID integer REFERENCES Recipes(id),
+  typeID integer REFERENCES Types(id),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT type_sets_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE ingredient_groups
+(
+  id serial NOT NULL,
+  name character varying(255),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT ingredient_groups_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE ingredients
+(
+  id serial NOT NULL,
+  name character varying(255),
+  groupID integer REFERENCES Ingredient_Groups(id),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT ingredients_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE ingredient_sets
+(
+  id serial NOT NULL,
+  recipeID integer REFERENCES Recipes(id),
+  ingredientID integer REFERENCES Ingredients(id),
+  amountNum numeric,
+  unitOfMeasure character varying(255),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT ingredient_sets_pkey PRIMARY KEY (id)
+)

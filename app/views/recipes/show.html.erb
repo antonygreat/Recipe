@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>recipe:</strong>
-  <%= @recipe.id %>
-</p>
-
-<p>
-  <strong>Userid:</strong>
-  <%= @recipe.userid %>
-</p>
-
-<p>
   <strong>Title:</strong>
   <%= @recipe.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= User.find(@recipe.userid).name %>
 </p>
 
 <p>
@@ -89,7 +84,7 @@
     <%= f.text_field :comment %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Add Comment' %>
   </div>
   <% end %>
 </div>

@@ -1,3 +1,42 @@
 // Place all the styles related to the Ingredient_Groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#main_ingre{
+padding:15px 30px 15px 5px;
+margin:15px 0;
+background:#E3E3E3;
+}
+
+#main_ingre img{
+width:80px;
+height:80px;
+}
+
+#main_ingre a{
+color:#D95B1C;
+text-decoration:none;
+	&:hover{
+	color:#ADB2AD;
+	}
+}
+
+#ingre{
+padding-right:15px;
+margin:0 20px;
+}
+
+#ingre img{
+width:50px;
+height:50px;
+}
+
+#ingre a{
+color:#F27537;
+text-decoration:none;
+	&:hover{
+	color:#ADB2AD;
+	}
+}

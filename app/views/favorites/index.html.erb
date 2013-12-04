@@ -1,12 +1,10 @@
-<h1>Listing My Favorites</h1>
+<h1>My Favorites</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Recipeid</th>
-      <th>userid</th>
-      <th></th>
-      <th></th>
+      <th>Recipe Title</th>
+      <th>Author</th>
       <th></th>
     </tr>
   </thead>
@@ -14,8 +12,11 @@
   <tbody>
     <% @favorites.each do |favorite| %>
       <tr>
-        <td><%= favorite.recipeid %></td>
-        <td><%= favorite.userid %></td>
+        <td><%= link_to Recipe.find(favorite.recipeid).title, Recipe.find(favorite.recipeid) %></td>
+        <td><%= User.find(favorite.userid).name %></td>
+	<td>
+	  <button><%= link_to "Dislike", favorite, method: :delete %></button>
+	</td>
       </tr>
     <% end %>
   </tbody>
