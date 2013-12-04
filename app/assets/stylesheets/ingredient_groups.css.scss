@@ -2,12 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+table{
+margin:30px;
+}
 
 #main_ingre{
 padding:15px 30px 15px 5px;
 margin:15px 0;
-background:#E3E3E3;
 }
 
 #main_ingre img{
@@ -17,15 +18,19 @@ height:80px;
 
 #main_ingre a{
 color:#D95B1C;
-text-decoration:none;
 	&:hover{
 	color:#ADB2AD;
 	}
 }
 
+td{
+padding:0;
+margin:0;
+}
+
 #ingre{
-padding-right:15px;
-margin:0 20px;
+padding:0;
+width:170px;
 }
 
 #ingre img{
@@ -35,8 +40,32 @@ height:50px;
 
 #ingre a{
 color:#F27537;
-text-decoration:none;
 	&:hover{
 	color:#ADB2AD;
 	}
+}
+
+
+/* For showing ingredients in all ingredients page*/
+
+.ingre img{
+width:50px;
+height:50px;
+}
+
+.ingre{
+margin:30px 0 30px 50px;
+}
+
+.ingre li{
+width:120px;
+height:120px;
+}
+
+#ingredients{
+margin:30px;
+}
+
+#ingredients a{
+float:left;
 }

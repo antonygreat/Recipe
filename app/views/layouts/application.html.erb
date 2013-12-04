@@ -16,22 +16,26 @@
       </div>
 
       <div id="nav">
-	<ul class="menu">
-	  <li><%= link_to_unless_current "Home",controller: "home" %></li>
-	  <li><%= link_to_unless_current "Search By Ingredients",controller: "ingredient_groups" %></li>
-	  <li><%= link_to_unless_current "Search By Types",controller: "types" %></li>
+	<ul class="person">
 	  <% if signed_in? %>
-	  <li><%= link_to_unless_current "Make New Recipe",new_recipe_path %></li>
-	  <li><%= link_to_unless_current "My Recipes",recipes_path %></li>
-	  <li><%= link_to_unless_current "My Favorites",favorites_path %></li>
-	  <li><%= link_to_unless_current "Setting", edit_user_path(current_user)%></li>
-	  <li><%= link_to_unless_current "Log Out", signout_path, method: "delete" %></li>
+	  <li><%= link_to "Make New Recipe",new_recipe_path %></li>
+	  <li><%= link_to "My Recipes",recipes_path %></li>
+	  <li><%= link_to "My Favorites",favorites_path %></li>
+	  <li><%= link_to "Setting", edit_user_path(current_user)%></li>
+	  <li><%= link_to "Log Out", signout_path, method: "delete" %></li>
 	  <% else %>
-	  <li> <%= link_to_unless_current "Log In", signin_path %></li>
-	  <li> <%= link_to_unless_current "Register", register_path%></li>
+	  <li> <%= link_to "Log In", signin_path %></li>
+	  <li> <%= link_to "Register", register_path%></li>
 	  <% end %>
 	</ul>
       </div>
+
+	<ul class="menu">
+	  <li><%= link_to "Home",controller: "home" %></li>
+	  <li><%= link_to "Search By Ingredients",controller: "ingredient_groups" %></li>
+	  <li><%= link_to "Search By Types",controller: "types" %></li>
+	  
+	</ul>
 
     </div>
 
@@ -40,15 +44,12 @@
     </div>
 
     <div id="footer">
-aaaaaaaaaaaaa
+      aaaaaaaaaaaaa
     </div>
 </div>
-  
 
-<!--<%= yield %>-->
 
 <% flash.each do |key,value|%>
-  <p><%= value %></p>
-<%end%>
+<p><%= value %></p><% end %>
 </body>
 </html>

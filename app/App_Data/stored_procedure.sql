@@ -121,7 +121,7 @@ INSERT INTO Ingredients(name,groupid) VALUES
 ('Soft Bone',1),
 ('Tongue',1),
 ('Turkey',1),
-('Lucheon Meat',1),
+('Luncheon Meat',1),
 ('Smoked Meat',1),
 ('Shank',1),
 ('Pork Intestine',1),

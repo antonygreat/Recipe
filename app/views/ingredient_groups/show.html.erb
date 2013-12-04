@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
- <strong><%= @ingredient_group.name %></strong>
+  <strong><%= @ingredient_group.name %></strong>
 </p>
 
-<table>
+
+
+<ul class="ingre">
   <% @ingredients.each do |ingredient| %>
-  <tr>
-    <td>
+
+  <li>
+    <div id="ingredients">
       <%= image_tag("Ingredient/"+@ingredient_group.name+"/"+ingredient.name+".jpg",
 	  :alt => "Ingredient") %>
-	  <%= link_to ingredient.name, ingredient %></td>
-  </tr>
+      <%= link_to ingredient.name,ingredient %>
+    </div>
+  </li>
+
   <% end %>
-</table>
-
-
-<%= link_to 'Back', ingredient_groups_path %>
+</ul>

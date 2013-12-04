@@ -1,37 +1,32 @@
 <table>
-    <tr>
-      <th>Ingredient Group</th>
-      <th>Ingredient</th>
-      <th></th>
-    </tr>
-
-    <% @ingredient_groups.each do |ingredient_group| %>
-    <tr>
-      <td>
-	<div id="main_ingre">
-	  <%= image_tag("Ingredient/"+ingredient_group.name+".jpg",
-	      :class => "ingredient_img",
-	  :alt => "Main Category") %>
-	  <strong><%= link_to ingredient_group.name,ingredient_group %></strong>
-      </td>
+  <% @ingredient_groups.each do |ingredient_group| %>
+  <tr>
+    <td>
+      <div id="main_ingre">
+	<%= image_tag("Ingredient/"+ingredient_group.name+".jpg",
+	:alt => "Main Category") %>
+	<%= link_to ingredient_group.name,ingredient_group %>
       </div>
-      <% i=0 %>
-      <% @ingredients.each do |ingredient| %>
-      
-      <% if ingredient_group.id == ingredient.groupid && i<5 %>
-	 <td>
-	   <div id="ingre">
-	     <%= image_tag("Ingredient/"+ingredient_group.name+"/"+ingredient.name+".jpg",
-		 :alt => "Sub Category") %>
-      <%= link_to ingredient.name,ingredient %>
-</div>	      
- </td>	
-	     <% i += 1 %>
-	   <% end %>
-	 <% end %>
+    </td>
 
-	 <td><strong><%= link_to "More", ingredient_group %></strong></td>
-      </tr>
-    <% end %>
+    <% i=0 %>
+    <% @ingredients.each do |ingredient| %>
+    
+    <% if ingredient_group.id == ingredient.groupid && i<5 %>
+       <td>
+	 <div id="ingre">
+	   <%= image_tag("Ingredient/"+ingredient_group.name+"/"+ingredient.name+".jpg",
+    :alt => "Sub Category") %>
+    <%= link_to ingredient.name,ingredient %>
+</div>    
+</td>	
+<% i += 1 %>
 
+<% end %>
+
+<% end %>
+
+<td><strong><%= link_to "More", ingredient_group %></strong></td>
+</tr>
+  <% end %>
 </table>
