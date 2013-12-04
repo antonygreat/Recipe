@@ -3,8 +3,7 @@
   <tr>
     <td>
       <div id="main_ingre">
-	<%= image_tag("Ingredient/"+ingredient_group.name+".jpg",
-	:alt => "Main Category") %>
+	<%= link_to image_tag("Ingredient/"+ingredient_group.name+".jpg",:alt => "Main Category"),ingredient_group %>
 	<%= link_to ingredient_group.name,ingredient_group %>
       </div>
     </td>
@@ -15,8 +14,7 @@
     <% if ingredient_group.id == ingredient.groupid && i<5 %>
        <td>
 	 <div id="ingre">
-	   <%= image_tag("Ingredient/"+ingredient_group.name+"/"+ingredient.name+".jpg",
-    :alt => "Sub Category") %>
+	   <%= link_to image_tag("Ingredient/"+ingredient_group.name+"/"+ingredient.name+".jpg",:alt => "Sub Category"),ingredient %>
     <%= link_to ingredient.name,ingredient %>
 </div>    
 </td>	
