@@ -6,25 +6,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    #For getting the ingredient info from ingredient set
-    @ingredientset=IngredientSet.where("recipeid=?",set_recipe.id)
-    
-    @ingredients = Array.new()
-    i=0
-    @ingredientset.each do |set|
-       @ingredients[i]=Ingredient.find(set.ingredientid)
-      i+=1
-    end
-
-    #For getting the type infor from type set
-    @typesets=TypeSet.where("recipeid=?",set_recipe.id)
-
-    @types = Array.new()
-    i=0
-    @typesets.each do |set|
-       @types[i]=Type.find(set.typeid)
-      i+=1
-    end
     #get comments from db
     @comments = Comment.where("recipeid = ? AND isban = ?", set_recipe.id , false)
 

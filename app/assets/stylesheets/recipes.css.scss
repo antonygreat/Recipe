@@ -1,3 +1,57 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#recipe li{
+margin:40px 0;
+width:600px;
+background:white;
+}
+
+ul #title{
+font-family: "Lucida Console", Monaco, monospace;
+font-size:22px;
+color:#DF6223;
+	&:hover{
+	color:#F32C05;
+	}
+}
+
+ul #author{
+font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+ul #favorite{
+color:#4759AF;
+}
+
+#recipe span{
+margin-left:30px;
+}
+
+#recipe span .ing{
+background:#E5CD2F;
+border-radius:3px;
+}
+
+#recipe img{
+width:120px;
+height:120px;
+float:left;
+border-style:outset;
+border-width:3px;
+border-color:#e06224;
+border-radius:4px;
+}
+
+/* new recipe*/
+#ingredients_id{
+width:300px;
+height:200px;
+}
+
+#types_id{
+width:200px;
+height:200px;
+}

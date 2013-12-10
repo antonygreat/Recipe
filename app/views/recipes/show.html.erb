@@ -21,15 +21,15 @@
 
 <p>
   <strong>Ingredients:</strong>
-  <% @ingredients.each do |i| %>
-  <%= i.name %>
+  <% IngredientSet.where("recipeid = ?",@recipe.id).each do |set| %>
+  <%= Ingredient.find(set.ingredientid).name %>
   <% end %>
 </p>
 
 <p>
   <strong>Types:</strong>
-  <% @types.each do |i| %>
-  <%= i.name %>
+  <% TypeSet.where("recipeid = ?",@recipe.id).each do |set| %>
+  <%= Type.find(set.typeid).name %>
   <% end %>
 </p>
 

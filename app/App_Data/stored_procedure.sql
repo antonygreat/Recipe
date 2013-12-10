@@ -3,6 +3,7 @@ DROP TABLE Ingredients;
 DROP TABLE Ingredient_Groups;
 DROP TABLE Type_Sets;
 DROP TABLE Types;
+DROP TABLE Images;
 DROP TABLE Comments;
 DROP TABLE Favorites;
 DROP TABLE Recipes;

@@ -1,26 +1,40 @@
-<h1>My Favorites</h1>
+<div id="center">
 
-<table>
-  <thead>
-    <tr>
-      <th>Recipe Title</th>
-      <th>Author</th>
-      <th></th>
-    </tr>
-  </thead>
+  <ul id="recipe">
+    <h2>My Favorite Recipes</h2>
 
-  <tbody>
     <% @favorites.each do |favorite| %>
-      <tr>
-        <td><%= link_to Recipe.find(favorite.recipeid).title, Recipe.find(favorite.recipeid) %></td>
-        <td><%= User.find(favorite.userid).name %></td>
-	<td>
-	  <button><%= link_to "Dislike", favorite, method: :delete %></button>
-	</td>
-      </tr>
+    <li>
+      <%=link_to image_tag("Recipe/"+Recipe.find(favorite.recipeid).id.to_s+"/"+Image.find_by(recipeid:
+		 favorite.recipeid).name, :alt => "recipe"),Recipe.find(favorite.recipeid) %>
+      <span>
+	<%= link_to Recipe.find(favorite.recipeid).title, Recipe.find(favorite.recipeid), :id => "title" %>
+      </span>
+      <br /><br />
+      <span>
+	<%= link_to User.find(Recipe.find(favorite.recipeid).userid).name,
+	    User.find(Recipe.find(favorite.recipeid).userid), :id => "author" %>
+      </span>
+      <br /><br />
+      <span>
+	Main Ingredients:
+	<% IngredientSet.where("recipeid = ?", Recipe.find(favorite.recipeid).id).each do |set| %>
+	<text class="ing"><%= Ingredient.find(set.ingredientid).name %></text>
+	<% end %>
+      </span>
+      <br /><br />
+      <span id="favorite">
+	Favorited By : <%= Favorite.where("recipeid =
+					   ?",Recipe.find(favorite.recipeid).id).count %>
+	Users
+      </span>
+      <span>
+	&nbsp;&nbsp;&nbsp;
+	Posted On : <%= Recipe.find(favorite.recipeid).created_at %>
+      </span>
+    </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
 
-<br>
+</div>
 
