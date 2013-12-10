@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag("Recipe/"+@recipe.id.to_s+"/"+Image.find_by(recipeid: @recipe.id).name, :alt => "recipe") %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @recipe.title %>
 </p>

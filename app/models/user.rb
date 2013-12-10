@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
 	attr_accessible :name , :email, :password, :password_confirmation, :remember_token
 	has_secure_password
 
-  has_many:recipes
-  has_many:favorites
-  has_many:comments
-
+  has_many :recipes
+  has_many :favorites
+  has_many :comments
+  has_one :image
 
 	before_save do
   		self.email.downcase! if self.email

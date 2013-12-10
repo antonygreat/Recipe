@@ -77,6 +77,19 @@ class RecipesController < ApplicationController
             @typeset.save
           end
         end
+
+        #save the image into db
+        dir ="#{Rails.root}/app/assets/images/Recipe/#{@recipe.id}"
+
+        Dir.mkdir(dir) unless File.exists?(dir)
+
+        uploaded_io = params[:recipe][:image]
+        File.open(Rails.root.join('app', 'assets','images', 'Recipe', @recipe.id.to_s, uploaded_io.original_filename), 'wb') do |file|
+          file.write(uploaded_io.read)
+        end
+        @image=Image.new(:recipeid => @recipe.id, :name => uploaded_io.original_filename)
+        @image.save
+
         
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
         format.json { render action: 'new', status: :created, location: @recipe }

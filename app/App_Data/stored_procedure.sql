@@ -92,6 +92,17 @@ CREATE TABLE ingredient_sets
   CONSTRAINT ingredient_sets_pkey PRIMARY KEY (recipeid,ingredientid)
 );
 
+CREATE TABLE images
+(
+  id serial NOT NULL,
+  userid integer references users(id),
+  recipeid integer references recipes(id),
+  name character varying(255),
+  created_at timestamp without time zone,
+  updated_at timestamp without time zone,
+  CONSTRAINT images_pkey PRIMARY KEY (id)
+);
+
 INSERT INTO Ingredient_Groups(name) VALUES 
 ('Meat'),
 ('Sea Food'),

@@ -11,10 +11,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131127152507) do
+ActiveRecord::Schema.define(version: 20131210004540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: true do |t|
+    t.integer  "recipeid"
+    t.integer  "userid"
+    t.boolean  "isban"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", force: true do |t|
+    t.integer  "recipeid"
+    t.integer  "userid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: true do |t|
+    t.integer  "userid"
+    t.integer  "recipeid"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ingredient_groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ingredient_sets", id: false, force: true do |t|
+    t.integer  "id",            null: false
+    t.integer  "recipeid",      null: false
+    t.integer  "ingredientid",  null: false
+    t.decimal  "amountnum"
+    t.string   "unitofmeasure"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ingredients", force: true do |t|
+    t.string   "name"
+    t.integer  "groupid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recipes", force: true do |t|
+    t.integer  "userid"
+    t.string   "title"
+    t.string   "description", limit: 5000
+    t.boolean  "isban"
+    t.integer  "imageid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "type_sets", id: false, force: true do |t|
+    t.integer  "id",         null: false
+    t.integer  "recipeid",   null: false
+    t.integer  "typeid",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

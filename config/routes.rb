@@ -1,4 +1,6 @@
 Niceweather::Application.routes.draw do
+  resources :images
+
   resources :favorites
 
   resources :comments
