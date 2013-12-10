@@ -1,17 +1,35 @@
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div id="center">
+  <ul id="recipe">
+    <h2>Results</h2>
     <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= link_to recipe.title,recipe %></td>
-        <td><%= User.find(recipe.userid).name %></td>
-      </tr>
+    <li>
+      <%=link_to image_tag("Recipe/"+recipe.id.to_s+"/"+Image.find_by(recipeid:
+		 recipe.id).name, :alt => "recipe"),recipe %>
+      <span>
+	<%= link_to recipe.title, recipe, :id => "title" %>
+      </span>
+      <br /><br />
+      <span>
+	<%= link_to User.find(recipe.userid).name,
+	    User.find(recipe.userid), :id => "author" %>
+      </span>
+      <br /><br />
+      <span>
+	Main Ingredients:
+	<% IngredientSet.where("recipeid = ?", recipe.id).each do |set| %>
+	<text class="ing"><%= Ingredient.find(set.ingredientid).name %></text>
+	<% end %>
+      </span>
+      <br /><br />
+      <span id="favorite">
+	Favorited By : <%= Favorite.where("recipeid =
+					   ?",recipe.id).count %> Users
+      </span>
+      <span>
+	&nbsp;&nbsp;&nbsp;
+	Posted On : <%= recipe.created_at %>
+      </span>
+    </li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</div>
