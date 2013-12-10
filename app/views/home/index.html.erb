@@ -1,0 +1,48 @@
+<div id="center_home">
+  <ul id="latest">
+    <h2>Newest Recipes</h2>
+    <% Recipe.last(20).each do |recipe| %>
+    <li>
+      <%=link_to image_tag("Recipe/"+recipe.id.to_s+"/"+Image.find_by(recipeid:
+		 recipe.id).name, :alt => "recipe"),recipe %>
+      <span>
+	<%= link_to recipe.title, recipe, :class => "title" %>
+      </span>
+      <br /><br />
+      <span>
+	<%= link_to User.find(recipe.userid).name,
+	    User.find(recipe.userid), :class => "author" %>
+      </span>
+      <br /><br />
+      <span id="favorite">
+	<%= Favorite.where("recipeid =
+					   ?",recipe.id).count %> Liked
+      </span>
+    </li>
+    <% end %>
+  </ul>
+
+
+  <ul id="likest">
+    <h2>Most People Liked Recipes</h2>
+    <% Recipe.order(:favnum).first(20).each do |recipe| %>
+    <li>
+      <%= link_to image_tag("Recipe/"+recipe.id.to_s+"/"+Image.find_by(recipeid:
+		 recipe.id).name, :alt => "recipe"),recipe %>
+      <span>
+	<%= link_to recipe.title, recipe, :class => "title" %>
+      </span>
+      <br /><br />
+      <span>
+	<%= link_to User.find(recipe.userid).name,
+	    User.find(recipe.userid), :class => "author" %>
+      </span>
+      <br /><br />
+      <span id="favorite">
+	<%= Favorite.where("recipeid =
+			    ?",recipe.id).count %> Liked
+      </span>
+    </li>
+    <% end %>
+  </ul>
+</div>

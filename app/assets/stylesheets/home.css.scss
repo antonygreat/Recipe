@@ -1,3 +1,44 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#center_home{
+margin:0 10px;
+}
+
+#latest{
+float:left;
+}
+
+#likest{
+clear:both;
+}
+
+#latest li,#likest li{
+margin:40px 10px;
+background:white;
+}
+
+#latest .title,#likest .title{
+font-family: "Lucida Console", Monaco, monospace;
+font-size:22px;
+color:#DF6223;
+	&:hover{
+	color:#F32C05;
+	}
+}
+
+#latest .author,#likest .author{
+font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+
+#latest img, #likest img{
+float:left;
+width:120px;
+height:120px;
+border-style:outset;
+border-width:3px;
+border-color:#e06224;
+border-radius:4px;
+}

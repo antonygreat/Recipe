@@ -16,14 +16,14 @@
       <br /><br />
       <span>
 	Main Ingredients:
-	<% IngredientSet.where("recipeid = ?", recipe.id).each do |set| %>
+	<% IngredientSet.where("recipeid = ?", recipe.id).first(3).each do |set| %>
 	<text class="ing"><%= Ingredient.find(set.ingredientid).name %></text>
 	<% end %>
       </span>
       <br /><br />
       <span id="favorite">
-	Favorited By : <%= Favorite.where("recipeid =
-					   ?",recipe.id).count %> Users
+	<%= Favorite.where("recipeid =
+					   ?",recipe.id).count %> Liked
       </span>
       <span>
 	&nbsp;&nbsp;&nbsp;

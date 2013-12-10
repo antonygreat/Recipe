@@ -16,6 +16,7 @@ CREATE TABLE recipes
   description character varying(5000),
   isban boolean,
   imageid integer,
+  favnum integer,
   created_at timestamp without time zone,
   updated_at timestamp without time zone,
   CONSTRAINT recipes_pkey PRIMARY KEY (id)

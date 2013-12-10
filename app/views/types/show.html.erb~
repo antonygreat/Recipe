@@ -1,6 +1,6 @@
 <div id="center">
   <ul id="recipe">
-    <h2>My Recipes</h2>
+    <h2>Results</h2>
     <% @recipes.each do |recipe| %>
     <li>
       <%=link_to image_tag("Recipe/"+recipe.id.to_s+"/"+Image.find_by(recipeid:
@@ -17,15 +17,13 @@
       <span>
 	Main Ingredients:
 	<% IngredientSet.where("recipeid = ?", recipe.id).first(3).each do |set| %>
-	<text class="ing">
-	<%= Ingredient.find(set.ingredientid).name %>
-	</text>
+	<text class="ing"><%= Ingredient.find(set.ingredientid).name %></text>
 	<% end %>
       </span>
       <br /><br />
       <span id="favorite">
-	<%= Favorite.where("recipeid =
-					   ?",recipe.id).count %> Liked
+	Favorited By : <%= Favorite.where("recipeid =
+					   ?",recipe.id).count %> Users
       </span>
       <span>
 	&nbsp;&nbsp;&nbsp;

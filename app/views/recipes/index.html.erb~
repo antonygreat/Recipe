@@ -24,8 +24,8 @@
       </span>
       <br /><br />
       <span id="favorite">
-	<%= Favorite.where("recipeid =
-					   ?",recipe.id).count %> Liked
+	Favorited By : <%= Favorite.where("recipeid =
+					   ?",recipe.id).count %> Users
       </span>
       <span>
 	&nbsp;&nbsp;&nbsp;

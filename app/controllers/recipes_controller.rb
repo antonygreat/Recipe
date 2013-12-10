@@ -39,6 +39,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(params[:recipe])
     @recipe.userid=current_user.id
     @recipe.isban=false
+    @recipe.favnum=0
 
     respond_to do |format|
       if @recipe.save

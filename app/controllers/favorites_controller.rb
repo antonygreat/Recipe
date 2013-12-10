@@ -11,22 +11,19 @@ class FavoritesController < ApplicationController
     if @favorite.nil? #this recipe hasn't been added by this user
       @favorite = Favorite.new(params[:favorite])
       @favorite.userid=current_user.id    
+     
       if @favorite.save
-        redirect_to Recipe.find(@favorite.recipeid)
+        @recipe=Recipe.find(@favorite.recipeid)
+        @recipe.favnum+=1
+        @recipe.save
+        redirect_to @recipe
       end
     else #the recipe has been added by user
+      @recipe=Recipe.find(params[:favorite][:recipeid])
+      @recipe.favnum-=1
+      @recipe.save
       @favorite.destroy
-      redirect_to Recipe.find(params[:favorite][:recipeid])
-    end
-  end
-
-  # DELETE /favorites/1
-  # DELETE /favorites/1.json
-  def destroy
-    @favorite.destroy
-    respond_to do |format|
-      format.html { redirect_to favorites_url }
-      format.json { head :no_content }
+      redirect_to @recipe 
     end
   end
 
